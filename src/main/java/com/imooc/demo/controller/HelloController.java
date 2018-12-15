@@ -5,7 +5,9 @@ import com.imooc.demo.domain.baseResponse;
 import com.imooc.demo.domain.girlEntity;
 import com.imooc.demo.domain.requestParam.appUserinfo;
 import com.imooc.demo.domain.requestParam.userInfo;
+import com.imooc.demo.domain.viewModel.girl_info;
 import com.imooc.demo.properties.girlProperties;
+import com.imooc.demo.repository.girlReponsity;
 import com.imooc.demo.service.girlService;
 import com.sun.org.apache.xpath.internal.operations.String;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,8 @@ public class HelloController {
     @Autowired
     girlEntity objGirlEntity;
 
+    @Autowired
+    private girlReponsity GirlReponsity;
     @RequestMapping(value = {"/getGirl/{id}", "getG/{id}"}, method = RequestMethod.GET)
     /**   http://localhost:8082/api/hello/getGirl/9988   */
     public java.lang.String HelloSpringBoot(@PathVariable("id") int id) {
@@ -81,5 +85,11 @@ public class HelloController {
         return result;
     }
 
+    @RequestMapping(value = "/getGirls", method = RequestMethod.GET)
+    /**   key-value 返回   */
+    public List<girl_info> getGirls() {
+        List<girl_info> lst = GirlReponsity.findAllBy();
+        return lst;
+    }
 
 }
