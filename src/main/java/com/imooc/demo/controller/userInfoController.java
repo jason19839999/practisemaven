@@ -39,7 +39,7 @@ public class userInfoController {
     public String Add(Model model) {
 
         model.addAttribute("obj", new userInfoEntity());
-        return "/user/add";
+        return "user/add";
     }
 
     /**
