@@ -29,7 +29,7 @@ public class userInfoController {
         }
         int id = myId;
         model.addAttribute("users", userList);
-        return "/user/list";
+        return "user/list";
     }
 
     /**
